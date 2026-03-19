@@ -3,7 +3,7 @@ import { verifyToken } from '@/lib/auth/session';
 
 const PROTECTED_PATHS = ['/dashboard'];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isProtected = PROTECTED_PATHS.some((p) => pathname.startsWith(p));
   if (!isProtected) return NextResponse.next();
